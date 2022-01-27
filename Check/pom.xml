@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>finn_ryan.savannah/finn_ryan.savannah.HelloApplication</mainClass>
+                            <mainClass>finn_ryan.savannah/finn_ryan.savannah.Button</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
