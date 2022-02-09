@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scratch.ScratchController">
+   <children>
+      <VBox layoutX="158.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Button......................" />
+                  <Button mnemonicParsing="false" text="Button..............................................." />
+                  <Button mnemonicParsing="false" text="Button........................................" />
+                  <Button mnemonicParsing="false" text="Button..............................." />
+                  <Button mnemonicParsing="false" text="Button..............................." />
+                  <Button mnemonicParsing="false" text="Button...................................................." />
+                  <Button mnemonicParsing="false" text="Button.............................." />
+                  <Button mnemonicParsing="false" text="Button......................................................." />
+                  <Button mnemonicParsing="false" text="Button....................................................................................." />
+                  <Button mnemonicParsing="false" text="Button......................................." />
+               </children>
+            </FlowPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: yellow;" text="Label" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <Label text="Label" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: cyan;" text="Label" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <Label text="Label" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

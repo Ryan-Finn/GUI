@@ -1,4 +1,4 @@
-package finn_ryan.savannah;
+package finn_ryan.savannah.Control;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

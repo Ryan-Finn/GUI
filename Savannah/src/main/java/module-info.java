@@ -5,4 +5,6 @@ module finn_ryan.savannah {
 
     opens finn_ryan.savannah to javafx.fxml;
     exports finn_ryan.savannah;
+    exports finn_ryan.savannah.Control;
+    opens finn_ryan.savannah.Control to javafx.fxml;
 }
