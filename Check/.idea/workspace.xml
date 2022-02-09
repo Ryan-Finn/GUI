@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0f0e111-4543-4a1c-ad5c-de2a46909b54" name="Changes" comment="No target folders">
-      <change afterPath="$PROJECT_DIR$/src/main/java/finn_ryan/savannah/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/finn_ryan/savannah/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/finn_ryan/savannah/view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finn_ryan/savannah/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/finn_ryan/savannah/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/finn_ryan/savannah/hello-view.fxml" beforeDir="false" />
-    </list>
+    <list default="true" id="e0f0e111-4543-4a1c-ad5c-de2a46909b54" name="Changes" comment="Renaming" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643326691967</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Renaming">
+      <created>1643327161547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1643327161547</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +157,7 @@
     <MESSAGE value="JavaFX Check init" />
     <MESSAGE value="Finished" />
     <MESSAGE value="No target folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="No target folders" />
+    <MESSAGE value="Renaming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renaming" />
   </component>
 </project>
