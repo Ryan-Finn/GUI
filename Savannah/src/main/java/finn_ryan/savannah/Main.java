@@ -47,20 +47,17 @@ The grade you compute is the starting point for course staff, who reserve the ri
 
 package finn_ryan.savannah;
 
+import finn_ryan.savannah.View.Layout;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.util.Objects;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view.fxml")));
-        stage.setTitle("Hello!");
-        stage.setScene(new Scene(root, 320, 240));
-        stage.show();
+    public void start(Stage window) {
+        Layout layout = new Layout();
+        window.setTitle("Savannah Simulator");
+        window.setScene(layout.getScene());
+        window.show();
     }
 
     public static void main(String[] args) {
