@@ -19,8 +19,7 @@ public class Savannah {
 
     public void newDay() {
         this.days += 1;
-        //subject.firePropertyChange("newDay", null, this.days);
-        subject.firePropertyChange("onClick", null, 0);
+        subject.firePropertyChange("newDay", null, this.days);
     }
 
     public void resize(int newSize) {
