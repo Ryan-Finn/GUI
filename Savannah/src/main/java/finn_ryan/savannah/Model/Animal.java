@@ -27,7 +27,7 @@ public class Animal extends Button {
         this.setText(name.charAt(0) + ":" + health);
     }
 
-    public static int getID() {
+    public int getID() {
         return ID;
     }
 }

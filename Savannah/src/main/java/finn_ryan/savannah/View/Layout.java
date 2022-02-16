@@ -1,5 +1,6 @@
 package finn_ryan.savannah.View;
 
+import finn_ryan.savannah.Model.Animal;
 import finn_ryan.savannah.Model.Savannah;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -13,7 +14,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Objects;
 
 public class Layout implements PropertyChangeListener {
     private final SavannahView savannahView;
@@ -62,14 +62,13 @@ public class Layout implements PropertyChangeListener {
         vBox2.setAlignment(Pos.CENTER);
         ObservableList<Node> vBox2List = vBox2.getChildren();
         addVSpacer(vBox2);
-        //addComboBox(vBox2List, new String[]{"Zebra", "Cheetah", "None"});
+
         comboBox = new ComboBox<>();
         comboBox.getItems().addAll("Zebra", "Cheetah", "None");
         comboBox.getSelectionModel().select(0);
         selected = comboBox.getSelectionModel().getSelectedItem();
         vBox2List.add(comboBox);
 
-        //addRadioButtons(vBox2List, new String[]{"Add", "View"});
         group = new ToggleGroup();
         for (String t : new String[]{"Add", "View"}) {
             RadioButton node = new RadioButton(t);
@@ -84,7 +83,7 @@ public class Layout implements PropertyChangeListener {
 
         root.setTop(hBox);
         root.setLeft(vBox2);
-        savannahView = new SavannahView();
+        savannahView = new SavannahView(model);
         root.setCenter(savannahView.getView());
     }
 
@@ -107,6 +106,8 @@ public class Layout implements PropertyChangeListener {
     public Scene getScene() {
         return windowContents;
     }
+
+    public SavannahView getSavannahView() { return savannahView; }
 
     public Button getNewDay() {
         return newDay;
@@ -135,20 +136,10 @@ public class Layout implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent event) {
         info.setText("Day: " + model.getDays() + "\nFilled: " + model.getFilled() + "\nDied: " + model.getDead());
         switch (event.getPropertyName()) {
-            case "resize":
-                savannahView.resize((int)event.getNewValue());
-                break;
-
-            case "combo":
-                selected = (String)event.getNewValue();
-                break;
-
-            case "onClick":
-                savannahView.add((int)event.getNewValue(), selected);
-                break;
-
-            default:
-                break;
+            case "resize" -> savannahView.resize((int) event.getNewValue());
+            case "combo" -> selected = (String) event.getNewValue();
+            case "onClick" -> savannahView.add((Animal) event.getNewValue(), selected);
+            default -> {}
         }
     }
 }

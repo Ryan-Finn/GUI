@@ -1,5 +1,6 @@
 package finn_ryan.savannah.Control;
 
+import finn_ryan.savannah.Model.Animal;
 import finn_ryan.savannah.Model.Savannah;
 import finn_ryan.savannah.View.Layout;
 import javafx.event.ActionEvent;
@@ -19,6 +20,9 @@ public class Controller {
         view.getResize8().addEventFilter(ActionEvent.ACTION, new ResizeListener(8));
         view.getComboBox().addEventFilter(ActionEvent.ACTION, new ComboListener());
         //view.getGroup().addEventFilter(ActionEvent.ACTION, new ResizeListener(8));
+        for (Animal animal : model.getSavannah()) {
+            animal.addEventFilter(ActionEvent.ACTION, new AnimalListener(animal));
+        }
     }
 
     private class NewDayListener implements EventHandler<ActionEvent> {
@@ -45,6 +49,19 @@ public class Controller {
         @Override
         public void handle(ActionEvent e) {
             model.combo(view.getComboBox().getSelectionModel().getSelectedItem());
+        }
+    }
+
+    private class AnimalListener implements EventHandler<ActionEvent> {
+        private final Animal animal;
+        public AnimalListener(Animal button) {
+            super();
+            animal = button;
+        }
+
+        @Override
+        public void handle(ActionEvent e) {
+            model.onClick(animal);
         }
     }
 }

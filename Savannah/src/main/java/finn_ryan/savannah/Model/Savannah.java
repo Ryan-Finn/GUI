@@ -34,8 +34,8 @@ public class Savannah {
         subject.firePropertyChange("combo", null, selectedItem);
     }
 
-    public void onClick() {
-        subject.firePropertyChange("onClick", null, 1);
+    public void onClick(Animal button) {
+        subject.firePropertyChange("onClick", null, button);
     }
 
     public int getDays() {
@@ -48,5 +48,13 @@ public class Savannah {
 
     public int getDead() {
         return dead;
+    }
+
+    public ArrayList<Animal> getSavannah() { return savannah; }
+
+    public void addAnimal(Animal animal) {
+        int id = animal.getID();
+        if (savannah.size() > id) { savannah.remove(id); }
+        savannah.add(id, animal);
     }
 }
