@@ -1,6 +1,7 @@
 package finn_ryan.savannah.View;
 
 import finn_ryan.savannah.Model.Animal;
+import finn_ryan.savannah.Model.Cheetah;
 import finn_ryan.savannah.Model.None;
 import finn_ryan.savannah.Model.Zebra;
 import javafx.collections.ObservableList;
@@ -9,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
+import java.util.Objects;
+
 public class SavannahView {
     private final GridPane view;
     private static int r, c;
@@ -16,25 +19,15 @@ public class SavannahView {
 
     public SavannahView() {
         view = new GridPane();
-        init(3, 3);
+        init(3);
     }
 
-    public SavannahView(int sz) {
-        view = new GridPane();
-        init(sz, sz);
-    }
-
-    public SavannahView(int rows, int cols) {
-        view = new GridPane();
-        init(rows, cols);
-    }
-
-    private void init(int rows, int cols) {
-        r = rows; c = cols;
+    private void init(int sz) {
+        r = sz; c = sz;
         ObservableList<RowConstraints> rc = view.getRowConstraints();
         ObservableList<ColumnConstraints> cc = view.getColumnConstraints();
 
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < sz; i++) {
             RowConstraints row = new RowConstraints();
             row.setVgrow(Priority.ALWAYS);
             rc.add(row);
@@ -43,8 +36,8 @@ public class SavannahView {
             col.setHgrow(Priority.ALWAYS);
             cc.add(col);
 
-            for (int j = 0; j < cols; j++) {
-                None button = new None(i + j*cols);
+            for (int j = 0; j < sz; j++) {
+                None button = new None(i + j * sz);
                 button.setMaxSize(INF, INF);
                 view.add(button, i, j);
             }
@@ -55,10 +48,19 @@ public class SavannahView {
         view.getChildren().clear();
         view.getRowConstraints().clear();
         view.getColumnConstraints().clear();
-        init(sz, sz);
+        init(sz);
     }
 
-    public void add(int id, Animal button) {
+    public void add(int id, String animal) {
+        Animal button;
+        if (Objects.equals(animal, "Zebra")) {
+            button = new Zebra(id);
+        } else if (Objects.equals(animal, "Cheetah")) {
+            button = new Cheetah(id);
+        } else {
+            button = new None(id);
+        }
+
         button.setMaxSize(INF, INF);
         view.getChildren().remove(view.getChildren().get(id));
         view.add(button, (id - (id % c)) / c, id % c);

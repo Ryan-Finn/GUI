@@ -47,6 +47,8 @@ The grade you compute is the starting point for course staff, who reserve the ri
 
 package finn_ryan.savannah;
 
+import finn_ryan.savannah.Control.Controller;
+import finn_ryan.savannah.Model.Savannah;
 import finn_ryan.savannah.View.Layout;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -54,13 +56,15 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage window) {
-        Layout layout = new Layout();
+        Savannah model = new Savannah();
+        Layout view = new Layout(model);
+        Controller control = new Controller(model, view);
+
         window.setTitle("Savannah Simulator");
-        window.setScene(layout.getScene());
+        window.setScene(view.getScene());
+
         window.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+    public static void main(String[] args) { launch(); }
 }
