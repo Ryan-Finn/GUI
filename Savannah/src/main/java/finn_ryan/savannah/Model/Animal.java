@@ -70,9 +70,5 @@ public class Animal extends Button {
         this.setText(name.charAt(0) + ":" + health);
     }
 
-    public int getID() {
-        return ID;
-    }
-
     public void newDay() {}
 }

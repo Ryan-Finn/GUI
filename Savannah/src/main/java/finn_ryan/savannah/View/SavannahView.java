@@ -9,7 +9,6 @@ import javafx.scene.layout.RowConstraints;
 import java.util.Objects;
 
 public class SavannahView extends GridPane {
-    private AnimalView animalView;
     private final Savannah model;
 
     public SavannahView(Savannah model) {
@@ -32,7 +31,6 @@ public class SavannahView extends GridPane {
 
             for (int j = 0; j < sz; j++) {
                 None button = new None(i * sz + j);
-                animalView = new AnimalView(button);
                 this.add(button, j, i);
                 model.addAnimal(button);
             }

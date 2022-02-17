@@ -110,8 +110,6 @@ public class LayoutView implements PropertyChangeListener {
         return windowContents;
     }
 
-    public SavannahView getSavannahView() { return savannahView; }
-
     public Button getNewDay() {
         return newDay;
     }
