@@ -6,25 +6,21 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Objects;
 
-public class SavannahView implements PropertyChangeListener {
+public class SavannahView extends GridPane {
+    private AnimalView animalView;
     private final Savannah model;
-    private final GridPane view;
     private static final double INF = Double.POSITIVE_INFINITY;
 
     public SavannahView(Savannah model) {
         this.model = model;
-        view = new GridPane();
         init(3);
     }
 
     private void init(int sz) {
-        ObservableList<RowConstraints> rc = view.getRowConstraints();
-        ObservableList<ColumnConstraints> cc = view.getColumnConstraints();
+        ObservableList<RowConstraints> rc = this.getRowConstraints();
+        ObservableList<ColumnConstraints> cc = this.getColumnConstraints();
 
         for (int i = 0; i < sz; i++) {
             RowConstraints row = new RowConstraints();
@@ -38,16 +34,17 @@ public class SavannahView implements PropertyChangeListener {
             for (int j = 0; j < sz; j++) {
                 None button = new None(i * sz + j);
                 button.setMaxSize(INF, INF);
-                view.add(button, j, i);
+                animalView = new AnimalView(button);
+                this.add(button, j, i);
                 model.addAnimal(button);
             }
         }
     }
 
     public void resize(int sz) {
-        view.getChildren().clear();
-        view.getRowConstraints().clear();
-        view.getColumnConstraints().clear();
+        this.getChildren().clear();
+        this.getRowConstraints().clear();
+        this.getColumnConstraints().clear();
         init(sz);
     }
 
@@ -62,14 +59,8 @@ public class SavannahView implements PropertyChangeListener {
             button = new None(id);
         }
         button.setMaxSize(INF, INF);
-        view.getChildren().remove(replace);
-        view.getChildren().add(id, button);
+        this.getChildren().remove(replace);
+        this.getChildren().add(id, button);
         model.addAnimal(button);
     }
-
-    public GridPane getView() {
-        return view;
-    }
-
-    public void propertyChange(PropertyChangeEvent event) {}
 }

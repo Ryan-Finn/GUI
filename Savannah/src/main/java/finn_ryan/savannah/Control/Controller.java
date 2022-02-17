@@ -2,15 +2,19 @@ package finn_ryan.savannah.Control;
 
 import finn_ryan.savannah.Model.Animal;
 import finn_ryan.savannah.Model.Savannah;
-import finn_ryan.savannah.View.Layout;
+import finn_ryan.savannah.View.LayoutView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 
 public class Controller {
     private final Savannah model;
-    private final Layout view;
+    private final LayoutView view;
 
-    public Controller(Savannah data, Layout view) {
+    public Controller(Savannah data, LayoutView view) {
         this.view = view;
         model = data;
 
@@ -19,7 +23,12 @@ public class Controller {
         view.getResize5().addEventFilter(ActionEvent.ACTION, new ResizeListener(5));
         view.getResize8().addEventFilter(ActionEvent.ACTION, new ResizeListener(8));
         view.getComboBox().addEventFilter(ActionEvent.ACTION, new ComboListener());
-        //view.getGroup().addEventFilter(ActionEvent.ACTION, new ResizeListener(8));
+        view.getGroup().selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                model.radio(((RadioButton)t1).getText());
+            }
+        });
         for (Animal animal : model.getSavannah()) {
             animal.addEventFilter(ActionEvent.ACTION, new AnimalListener(animal));
         }

@@ -14,12 +14,14 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Objects;
 
-public class Layout implements PropertyChangeListener {
+public class LayoutView implements PropertyChangeListener {
     private final SavannahView savannahView;
     private final Scene windowContents;
 
     private final Text info;
+    private final Text info2;
     private final Button newDay;
     private final Button resize3;
     private final Button resize5;
@@ -28,9 +30,12 @@ public class Layout implements PropertyChangeListener {
     private final ToggleGroup group;
 
     private static String selected;
+    private static String radio;
+    private static Animal last;
+    private static String lastStyle;
     private final Savannah model;
 
-    public Layout(Savannah model) {
+    public LayoutView(Savannah model) {
         this.model = model;
         model.addObserver(this);
 
@@ -46,7 +51,8 @@ public class Layout implements PropertyChangeListener {
         newDay = new Button("New Day");
         hBoxList.add(newDay);
         addHSpacer(hBox);
-        addText(hBoxList, "Resize: ");
+        Text text = new Text("Resize: ");
+        hBoxList.add(text);
 
         VBox vBox = new VBox();
         ObservableList<Node> vBoxList = vBox.getChildren();
@@ -77,18 +83,15 @@ public class Layout implements PropertyChangeListener {
         }
 
         addVSpacer(vBox2);
-        addText(vBox2List, "Animal Info");
+        info2 = new Text("Animal Info");
+        vBox2List.add(info2);
         addVSpacer(vBox2);
         addVSpacer(vBox2);
 
         root.setTop(hBox);
         root.setLeft(vBox2);
         savannahView = new SavannahView(model);
-        root.setCenter(savannahView.getView());
-    }
-
-    private void addText(ObservableList<Node> parent, String text) {
-        parent.add(new Text(text));
+        root.setCenter(savannahView);
     }
 
     private void addHSpacer(HBox box) {
@@ -134,12 +137,30 @@ public class Layout implements PropertyChangeListener {
     }
 
     public void propertyChange(PropertyChangeEvent event) {
-        info.setText("Day: " + model.getDays() + "\nFilled: " + model.getFilled() + "\nDied: " + model.getDead());
         switch (event.getPropertyName()) {
-            case "resize" -> savannahView.resize((int) event.getNewValue());
+            case "resize" -> {
+                info2.setText("Animal Info");
+                savannahView.resize((int) event.getNewValue());
+            }
             case "combo" -> selected = (String) event.getNewValue();
-            case "onClick" -> savannahView.add((Animal) event.getNewValue(), selected);
+            case "radio" -> {
+                radio = (String) event.getNewValue();
+                info2.setText("Animal Info");
+                if (last != null) { last.setStyle(lastStyle); }
+            }
+            case "onClick" -> {
+                if (Objects.equals(radio, "Add")) {
+                    savannahView.add((Animal) event.getNewValue(), selected);
+                } else if (Objects.equals(radio, "View")) {
+                    if (last != null) { last.setStyle(lastStyle); }
+                    last = (Animal) event.getNewValue();
+                    lastStyle = last.getStyle();
+                    last.setStyle("-fx-border-color: cyan; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-insets: 1;");
+                    info2.setText(last.getName() + "\nHealth: " + last.getHealth());
+                }
+            }
             default -> {}
         }
+        info.setText("Day: " + model.getDays() + "\nFilled: " + model.getFilled() + "\nDied: " + model.getDead());
     }
 }

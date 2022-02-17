@@ -3,6 +3,7 @@ package finn_ryan.savannah.Model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Savannah {
     private int days = 0;
@@ -19,6 +20,16 @@ public class Savannah {
 
     public void newDay() {
         this.days += 1;
+        Animal animal;
+        for (int id = 0; id < savannah.size(); id++) {
+            animal = savannah.get(id);
+            animal.newDay();
+            if (animal.getHealth() <= 0 && !Objects.equals(animal.getName(), "None")) {
+                this.dead += 1;
+                this.filled -= 1;
+                addAnimal(new None(id));
+            }
+        }
         subject.firePropertyChange("newDay", null, this.days);
     }
 
@@ -32,6 +43,10 @@ public class Savannah {
 
     public void combo(String selectedItem) {
         subject.firePropertyChange("combo", null, selectedItem);
+    }
+
+    public void radio(String selectedItem) {
+        subject.firePropertyChange("radio", null, selectedItem);
     }
 
     public void onClick(Animal button) {
