@@ -11,7 +11,6 @@ import java.util.Objects;
 public class SavannahView extends GridPane {
     private AnimalView animalView;
     private final Savannah model;
-    private static final double INF = Double.POSITIVE_INFINITY;
 
     public SavannahView(Savannah model) {
         this.model = model;
@@ -33,7 +32,6 @@ public class SavannahView extends GridPane {
 
             for (int j = 0; j < sz; j++) {
                 None button = new None(i * sz + j);
-                button.setMaxSize(INF, INF);
                 animalView = new AnimalView(button);
                 this.add(button, j, i);
                 model.addAnimal(button);
@@ -50,7 +48,7 @@ public class SavannahView extends GridPane {
 
     public void add(Animal replace, String animal) {
         Animal button;
-        int id = replace.getID();
+        int id = this.getChildren().indexOf(replace);
         if (Objects.equals(animal, "Zebra")) {
             button = new Zebra(id);
         } else if (Objects.equals(animal, "Cheetah")) {
@@ -58,7 +56,7 @@ public class SavannahView extends GridPane {
         } else {
             button = new None(id);
         }
-        button.setMaxSize(INF, INF);
+
         this.getChildren().remove(replace);
         this.getChildren().add(id, button);
         model.addAnimal(button);

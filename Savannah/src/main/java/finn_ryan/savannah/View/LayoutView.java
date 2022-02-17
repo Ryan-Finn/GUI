@@ -150,6 +150,7 @@ public class LayoutView implements PropertyChangeListener {
             }
             case "onClick" -> {
                 if (Objects.equals(radio, "Add")) {
+                    model.incFilled();
                     savannahView.add((Animal) event.getNewValue(), selected);
                 } else if (Objects.equals(radio, "View")) {
                     if (last != null) { last.setStyle(lastStyle); }

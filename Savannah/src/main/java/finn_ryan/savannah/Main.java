@@ -15,7 +15,7 @@ __X__ e. Tile Text correct for each for one rectangle
 __X__ f. Tile Text correct for each for all rectangles
 __X__ g. Radio buttons update properly
 __X__ h. Selecting a rectangle with “view” affects the animal info somehow
-__P__ i. Selecting a rectangle with “view” affects the animal info correctly
+__X__ i. Selecting a rectangle with “view” affects the animal info correctly
 
 
 2a Tier: Advanced functionality	32
@@ -26,7 +26,7 @@ ____ d. Animal removed when dead on “new day”
 ____ e. Num died in info bar is correct (updates on the day the animal dies)
 ____ f. Num tiles filled in info bar is correct at all times
 __X__ e. The animal info at least holds
-__P__ f. Reselecting the tile updates the animal information correctly
+__X__ f. Reselecting the tile updates the animal information correctly
 
 
 2b: Layout	48
@@ -59,7 +59,7 @@ public class Main extends Application {
     public void start(Stage window) {
         Savannah model = new Savannah();
         LayoutView view = new LayoutView(model);
-        Controller control = new Controller(model, view);
+        new Controller(model, view);
 
         window.setTitle("Savannah Simulator");
         window.setScene(view.getScene());

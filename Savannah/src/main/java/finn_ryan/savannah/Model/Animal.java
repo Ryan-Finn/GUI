@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class Animal extends Button {
+    private static final double INF = Double.POSITIVE_INFINITY;
     private static String name;
     private int health;
     private final int ID;
@@ -18,6 +19,9 @@ public class Animal extends Button {
 
     public Animal(String n, int hp, int id, String c1, String c2, String file, double div) {
         super(n.charAt(0) + ":" + hp);
+
+        this.setMaxSize(INF, INF);
+
         this.setStyle("-fx-background-color:" +
                 "radial-gradient(center 50% -40%, radius 200%, " + c1 + " 49%, " + c2 + " 50%);" +
                 "-fx-border-color: white; -fx-border-radius: 10;" +

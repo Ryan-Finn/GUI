@@ -58,18 +58,23 @@ public class Savannah {
     }
 
     public int getFilled() {
-        return filled;
+        return this.filled;
+    }
+
+    public void incFilled() {
+        this.filled += 1;
     }
 
     public int getDead() {
-        return dead;
+        return this.dead;
     }
 
     public ArrayList<Animal> getSavannah() { return savannah; }
 
     public void addAnimal(Animal animal) {
-        int id = animal.getID();
-        if (savannah.size() > id) { savannah.remove(id); }
+        int id = savannah.indexOf(animal);
+        if (id < 0) { id = 0; }
+        if (savannah.size() > id) { savannah.remove(animal); }
         savannah.add(id, animal);
     }
 }
