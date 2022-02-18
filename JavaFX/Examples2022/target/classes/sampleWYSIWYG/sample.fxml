@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sampleWYSIWYG.Controller">
+   <Button mnemonicParsing="false" onAction="#buttonClicked"  text="Button" />
+   <Label fx:id="myText" text="Label" />
+   <TextField fx:id="myTextFeild" />
+   <Button fx:id="newButton" mnemonicParsing="false" text="Click Button" />
+   <Button id="minus" fx:id="minus2" mnemonicParsing="false" text="minus Button" />
+</VBox>
